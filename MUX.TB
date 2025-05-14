@@ -1,0 +1,26 @@
+module tb_reversible_mux;
+    reg  [3:0] in;
+    reg  [1:0] sel;
+    wire out;
+
+    reversible_mux uut (
+        .in(in),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+       
+        in = 4'b0000; sel = 2'b00; #10;
+        in = 4'b0001; sel = 2'b00; #10;
+        in = 4'b0010; sel = 2'b01; #10;
+        in = 4'b0100; sel = 2'b10; #10;
+        in = 4'b1000; sel = 2'b11; #10;
+        in = 4'b1111; sel = 2'b00; #10;
+        in = 4'b1010; sel = 2'b01; #10;
+        in = 4'b1100; sel = 2'b10; #10;
+        in = 4'b1110; sel = 2'b11; #10;
+
+        $finish;
+    end
+endmodule
